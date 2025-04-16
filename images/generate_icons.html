@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>生成SOAP图标</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 10px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            margin: 10px;
+            padding: 8px 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>SOAP图标生成器</h1>
+    <div class="container">
+        <div>
+            <canvas id="icon16" width="16" height="16"></canvas>
+            <canvas id="icon48" width="48" height="48"></canvas>
+            <canvas id="icon128" width="128" height="128"></canvas>
+        </div>
+        <button id="generate">生成图标</button>
+        <button id="download">下载图标</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas16 = document.getElementById('icon16');
+            const canvas48 = document.getElementById('icon48');
+            const canvas128 = document.getElementById('icon128');
+            
+            const ctx16 = canvas16.getContext('2d');
+            const ctx48 = canvas48.getContext('2d');
+            const ctx128 = canvas128.getContext('2d');
+            
+            function drawIcon(ctx, size) {
+                // 清空画布
+                ctx.clearRect(0, 0, size, size);
+                
+                // 设置背景色
+                ctx.fillStyle = '#4CAF50';
+                ctx.fillRect(0, 0, size, size);
+                
+                // 绘制"SOAP"文本
+                ctx.fillStyle = 'white';
+                ctx.font = `bold ${Math.floor(size * 0.4)}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('SOAP', size / 2, size / 2);
+                
+                // 绘制边框
+                ctx.strokeStyle = 'white';
+                ctx.lineWidth = Math.max(1, Math.floor(size * 0.05));
+                ctx.strokeRect(Math.floor(size * 0.1), Math.floor(size * 0.1), 
+                               Math.floor(size * 0.8), Math.floor(size * 0.8));
+            }
+            
+            document.getElementById('generate').addEventListener('click', function() {
+                drawIcon(ctx16, 16);
+                drawIcon(ctx48, 48);
+                drawIcon(ctx128, 128);
+            });
+            
+            document.getElementById('download').addEventListener('click', function() {
+                // 下载16x16图标
+                let link = document.createElement('a');
+                link.download = 'icon16.png';
+                link.href = canvas16.toDataURL('image/png');
+                link.click();
+                
+                // 下载48x48图标
+                link = document.createElement('a');
+                link.download = 'icon48.png';
+                link.href = canvas48.toDataURL('image/png');
+                link.click();
+                
+                // 下载128x128图标
+                link = document.createElement('a');
+                link.download = 'icon128.png';
+                link.href = canvas128.toDataURL('image/png');
+                link.click();
+            });
+            
+            // 初始生成图标
+            drawIcon(ctx16, 16);
+            drawIcon(ctx48, 48);
+            drawIcon(ctx128, 128);
+        });
+    </script>
+</body>
+</html> 
