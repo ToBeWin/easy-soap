@@ -2,6 +2,11 @@
 
 这是一个简单的SOAP接口测试工具，作为Chrome浏览器扩展实现，可以绕过浏览器的同源策略限制，方便测试SOAP Web服务。使用全屏标签页界面，提供更好的使用体验。
 
+![alt text](images/1.png)
+![alt text](images/2.png)
+![alt text](images/3.png)
+![alt text](images/4.png)
+
 ## 特性
 
 - 支持全屏标签页模式，提供更宽敞的工作空间
