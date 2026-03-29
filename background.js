@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   
   if (request.action === "sendSoapRequest") {
     console.log('准备发送SOAP请求到:', request.url);
-    const { url, soapAction, xmlBody } = request;
+    const { url, soapAction, xmlBody, customHeaders } = request;
     
     // 使用fetch API发送SOAP请求
     try {
@@ -37,6 +37,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       if (soapAction) {
         headers['SOAPAction'] = soapAction;
         console.log('添加SOAPAction:', soapAction);
+      }
+
+      // 添加自定义Headers
+      if (customHeaders) {
+        Object.keys(customHeaders).forEach(key => {
+            headers[key] = customHeaders[key];
+        });
       }
       
       // 发送请求

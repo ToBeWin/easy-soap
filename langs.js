@@ -26,7 +26,23 @@ const langs = {
     themeSwitchLabel: "主题:",
     lightTheme: "明亮",
     darkTheme: "深色",
-    proTheme: "专业"
+    proTheme: "专业",
+    formatBtn: "🔧 格式化",
+    clearBtn: "🗑️ 清空",
+    copyBtn: "📋 复制",
+    copySuccess: "✅ 已复制",
+    copyFailed: "❌ 复制失败，请手动复制",
+    historyLabel: "历史记录:",
+    historyPlaceholder: "-- 选择历史记录 --",
+    saveHistoryBtn: "💾 保存",
+    clearHistoryBtn: "🗑️ 清空历史",
+    saveSuccess: "已保存",
+    confirmClearHistory: "确定要清空所有历史记录吗？",
+    headersLabel: "自定义 Headers:",
+    addHeaderBtn: "➕ 添加",
+    promptHistoryName: "请输入历史记录名称（留空则使用默认名称）：",
+    confirmBtn: "确认",
+    cancelBtn: "取消"
   },
   en: {
     title: "Easy Soap",
@@ -54,6 +70,22 @@ const langs = {
     themeSwitchLabel: "Theme:",
     lightTheme: "Light",
     darkTheme: "Dark",
-    proTheme: "Professional"
+    proTheme: "Professional",
+    formatBtn: "🔧 Format",
+    clearBtn: "🗑️ Clear",
+    copyBtn: "📋 Copy",
+    copySuccess: "✅ Copied",
+    copyFailed: "❌ Copy failed, please copy manually",
+    historyLabel: "History:",
+    historyPlaceholder: "-- Select History --",
+    saveHistoryBtn: "💾 Save",
+    clearHistoryBtn: "🗑️ Clear History",
+    saveSuccess: "Saved",
+    confirmClearHistory: "Are you sure you want to clear all history records?",
+    headersLabel: "Custom Headers:",
+    addHeaderBtn: "➕ Add",
+    promptHistoryName: "Enter a name for this history record (leave blank for default):",
+    confirmBtn: "Confirm",
+    cancelBtn: "Cancel"
   }
 }; 

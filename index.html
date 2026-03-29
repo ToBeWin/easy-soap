@@ -31,7 +31,17 @@
     </div>
     
     <div class="main-container">
-        <div class="request-panel">
+        <div class="request-panel" id="request-panel">
+            <div class="history-group input-group">
+                <label for="history-select" id="history-label">历史记录:</label>
+                <div style="display: flex; gap: 10px;">
+                    <select id="history-select" style="flex: 1; padding: 8px; border-radius: 4px; border: 1px solid var(--input-border); background-color: var(--input-bg); color: var(--text-color);">
+                        <option value="">-- 选择历史记录 --</option>
+                    </select>
+                    <button id="save-history-btn" class="tool-btn" style="margin-top: 0; padding: 8px 15px;" title="保存当前请求">💾 保存</button>
+                    <button id="clear-history-btn" class="tool-btn" style="margin-top: 0; padding: 8px 15px;" title="清空历史记录">🗑️ 清空历史</button>
+                </div>
+            </div>
             <div class="input-group">
                 <label for="url" id="url-label">服务URL:</label>
                 <input type="text" id="url" placeholder="请输入SOAP服务URL">
@@ -40,16 +50,36 @@
                 <label for="action" id="action-label">SOAP Action:</label>
                 <input type="text" id="action" placeholder="请输入SOAP Action (可选)">
             </div>
+            <div class="input-group">
+                <div class="toolbar">
+                    <label id="headers-label">自定义 Headers:</label>
+                    <button id="add-header-btn" class="tool-btn" title="添加Header">➕ 添加</button>
+                </div>
+                <div id="headers-container" style="display: flex; flex-direction: column; gap: 5px;">
+                    <!-- Headers will be added here -->
+                </div>
+            </div>
             <div class="input-group" style="flex: 1; display: flex; flex-direction: column;">
-                <label for="request" id="request-label">SOAP请求体:</label>
+                <div class="toolbar">
+                    <label for="request" id="request-label">SOAP请求体:</label>
+                    <div class="toolbar-actions">
+                        <button id="format-req-btn" class="tool-btn" title="格式化XML">🔧 格式化</button>
+                        <button id="clear-req-btn" class="tool-btn" title="清空内容">🗑️ 清空</button>
+                    </div>
+                </div>
                 <textarea id="request" placeholder="请输入SOAP XML请求体"></textarea>
             </div>
             <button id="send-btn">发送请求</button>
         </div>
         
-        <div class="response-panel">
+        <div class="resizer" id="resizer"></div>
+        
+        <div class="response-panel" id="response-panel">
             <div class="response-header">
-                <h2 id="response-title">响应结果</h2>
+                <div class="toolbar">
+                    <h2 id="response-title">响应结果</h2>
+                    <button id="copy-res-btn" class="tool-btn" style="margin-left: 10px;" title="复制响应内容">📋 复制</button>
+                </div>
                 <div class="response-info">
                     <span><span id="status-label">状态:</span> <span id="status">-</span></span>
                     <span><span id="time-label">耗时:</span> <span id="time">-</span></span>
@@ -63,6 +93,21 @@
 
     <div class="footer">
         <span id="footer-text">Easy Soap v1.0 | 一个简单的跨域SOAP请求测试工具</span>
+    </div>
+
+    <!-- 自定义弹窗组件 (Toast & Modal) -->
+    <div id="toast-container" class="toast-container"></div>
+    
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-box">
+            <h3 id="modal-title">提示</h3>
+            <p id="modal-message"></p>
+            <input type="text" id="modal-input" class="modal-input" style="display: none;">
+            <div class="modal-actions">
+                <button id="modal-cancel-btn" class="modal-btn modal-cancel">取消</button>
+                <button id="modal-confirm-btn" class="modal-btn modal-confirm">确认</button>
+            </div>
+        </div>
     </div>
 
     <script src="langs.js"></script>
