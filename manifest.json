@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Easy Soap",
-  "version": "1.0",
+  "version": "1.1.0",
   "description": "一个简单的SOAP接口测试工具，支持跨域请求",
   "permissions": [
     "activeTab",
